@@ -1,0 +1,78 @@
+<h6>Profile Component</h6>
+
+<h6>
+    I am <span style="color: red;">{{name | titlecase}} </span>
+    I am a <span style="color: red;">{{status}} </span>
+    My Age is <span style="color: red;">{{age}} </span>
+    I am having salary <span style="color: red;">{{salary | currency:'INR'}} </span>
+</h6> 
+
+<h5>{{getName()}}</h5>
+
+<!-- Property Binding -->
+<button [class]="btnColor" [disabled]="isDisabled">Click Me !</button>
+
+<!-- Event Binding -->
+<button class="btn green" (click)="showSalary()">Show Salary</button>
+
+<!-- Property Binding  +  Event Binding -->
+<input type="text" [value]="inputValue" (input)="getInput($event)" />
+<input type="text" [value]="inputValue" (input)="inputValue = $any($event.target).value" />
+{{inputValue}}
+<!-- Two Way Data Binding => HTML to TS + TS to HTML -->
+<input type="text" [(ngModel)]="inputValue" />
+
+<!-- STRUCTURAL DIRECTIVE -->
+
+<!-- If Condition -->
+<h6 *ngIf="salary > 400; else lowSalary" >Salary 400 se jayada h</h6>
+<ng-template #lowSalary>
+    <h6>Salary 400 se kam h</h6>
+</ng-template>
+
+<!-- For -->
+<ul>
+    <li>{{fruits[0]}}</li>
+    <li>{{fruits[1]}}</li>
+    <li>{{fruits[2]}}</li>
+    <li>{{fruits[3]}}</li>
+    <li>{{fruits[4]}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let fruit of fruits;index as i">{{i}} -- > {{fruit}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let fruit of fruits;index as i;even as e">
+        <h6 *ngIf="e">
+            {{i}} -- > {{fruit}}
+        </h6>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let fruit of fruits;index as i;even as e" [class]="e ? 'red' : 'blue'">
+        <h6 >
+            {{i}} -- > {{fruit}}
+        </h6>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let fruit of fruits;index as i;even as e" [ngClass]="{'green': e, 'pink': !e}">
+        <h6 >
+            {{i}} -- > {{fruit}}
+        </h6>
+    </li>
+</ul>
+
+
+
+<input type="date" [(ngModel)]="myDate" />
+<h5>{{myDate | date: "fullDate"}}</h5>
+<h5>{{myDate | date: "dd MM YYYY"}}</h5>
+
+<br/>
+<br/>
+<br/> 

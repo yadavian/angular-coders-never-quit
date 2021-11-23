@@ -1,0 +1,15 @@
+<!-- <ng-content select="h5"></ng-content> -->
+<div class="card" style="margin: 2rem;">
+    <div class="card-image">
+        <img [src]="imagePath" style="height: 150px;width: 100%;"/>
+      <span class="card-title" >{{name}}</span>
+    </div>
+    <div class="card-content" appHighlight>
+        <h6>{{name}} => {{age}} => {{status}} </h6> <h6>{{salary | currency:"INR"}}</h6>
+    </div>
+    <div class="card-action">
+      <ng-content></ng-content>
+      <button class="btn" (click)="passDataToParent()">Fires Event to Pass Child to Parent</button>
+    </div>
+  </div>
+  <!-- <ng-content select="h6"></ng-content> -->
